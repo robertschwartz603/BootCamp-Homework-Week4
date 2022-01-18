@@ -8,18 +8,12 @@ var AnswerD = document.querySelector("#D");
 var userSelection = document.querySelectorAll(".userSelection");
 var timerElement = document.querySelector(".timer");
 var scoreDisplay = document.querySelector(".scoreDisplay");
-//var submitBtn = document.querySelector("#submitBtn");
-var score = 0
-var timerCount = 30;
-var timer;
-var highscores = [];
-var currentQuestion = 0;
 
 //Attaches start event listener to button
 start.addEventListener("click", Start);
 
 // Attaches event listener to submit button
-for (var i=0; i<userSelection.length;i++){
+for (var i = 0; i < userSelection.length; i++) {
     userSelection[i].addEventListener("click", Submit);
 };
 
@@ -114,17 +108,26 @@ var questions = [
         correct: "D"
     },
     {
-        question: "why is space black",
-        a: "void",
-        b: "fish",
-        c: "aliens",
-        d: "because there is nothing",
+        //this is always last question - do not touch. used for GameOver() activation before Timer() runs out.
+        question: "End of Quiz!",
+        a: "A",
+        b: "B",
+        c: "C",
+        d: "D",
         correct: "D"
     }
 ];
 
+//logs how many questions you have
+console.log(questions.length);
+
 //connected to start button
 function Start() {
+    //resets all fields
+    score = 0
+    timerCount = 30;
+    highscores = [];
+    currentQuestion = 0;
     //starts timer
     Timer()
     renderQ()
@@ -132,14 +135,14 @@ function Start() {
     start.classList.add("hide");
 };
 
-function renderQ(){
+function renderQ() {
     questionEl.innerText = questions[currentQuestion].question;
     AnswerA.innerText = questions[currentQuestion].a;
     AnswerB.innerText = questions[currentQuestion].b;
     AnswerC.innerText = questions[currentQuestion].c;
     AnswerD.innerText = questions[currentQuestion].d;
     scoreDisplay.innerText = score;
-}
+};
 
 //button value debug logs
 console.log(AnswerA);
@@ -147,22 +150,26 @@ console.log(AnswerB);
 console.log(AnswerC);
 console.log(AnswerD);
 
-//Submit button then compares user selection with right answer and logs score.
+//button then compares user selection with right answer and logs score.
 function Submit(e) {
-    if(e){
+    if (e) {
         console.log(e.target); //shows what was clicked
         console.log(e.target.id); //shows button ID
     }
-    if(e.target.id == questions[currentQuestion].correct){
+    if (e.target.id == questions[currentQuestion].correct) {
         console.log("correct answer");
         score++;
         console.log(score); //logs score
-    } else{
+    } else {
         console.log("wrong answer");
-        timerCount - 10;
+        timerCount-10;
     }
-    currentQuestion++;
-    renderQ()
+    if (questions[currentQuestion].question == "End of Quiz!") { //activates game over if on last question by looking "End of Quiz"
+        GameOver()
+    } else {
+        currentQuestion++;
+        renderQ()
+    }
 };
 
 //TIMER FUNCTION
@@ -177,49 +184,45 @@ function Timer() {
     }, 1000);
 };
 
-
 //game over function is activated via timer = 0 or last Q answered
 function GameOver() {
     var Initials = window.prompt("Game is over. Enter your initials"); //prompts for initials to add to score object
     var highScore = { //sets score object
-        Initials: Initials.value,
-        score: score.value, 
+        Initials: Initials,
+        score: score,
     }
     localStorage.setItem("highScore", JSON.stringify(highScore)); //sends score object to local storage
     renderHighScoreList();
 };
 
-function renderHighScoreList(){ //calls on locally stored object
+function renderHighScoreList() { //calls on locally stored object
     var highScoreList = JSON.parse(localStorage.getItem("highScore")); //parses the object 
     if (highScoreList) { //checks that its populated
-        document.querySelector(".leaderboardScores").textContent = highScoreList.score + highScoreList.Initials //renders it to high score list
+        var ul = document.getElementById("list");
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(highScoreList.score + " -- " + highScoreList.Initials));
+        ul.appendChild(li);
+        WellDone();
+        //document.querySelector(".leaderboardScores").textContent = highScoreList.score + highScoreList.Initials //renders it to high score list
     }
 };
 
+function WellDone() {
+    //initializes play again query:
+    var playAgain = window.confirm("Well done! Play again?");
+    // If yes
+    if (playAgain) {
+        clearInterval(timer);
+        Start();
+    } else {
+        timerElement.textContent = 0;
+    }
+}
 
 
 
+// ---- To Do: ----
+//  add proper questions
+//  get timer reduce after wrong question
+//  finish deploy and readme
 
-
-
-
-
-
- //questions[currentQuestion].answers.forEach((answer, index) => {
-   //document.createElement(`<button class="answerBtn" data-index="${index}">${answer}</button>`);
-// });
-
-// document.querySelector("answers").addEventListener("click", function(e){
-//     if(e.target.matches(".answerBtn")){
-//         //
-//     }
-// });
-
-
-
-
-//event.listener for startBtn - starts function.question1() and timer function;
-
-//var questions = array of objects
-
-//var current question (starts as 1st in arra)
