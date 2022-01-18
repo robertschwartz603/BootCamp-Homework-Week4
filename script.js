@@ -8,6 +8,8 @@ var AnswerD = document.querySelector("#D");
 var userSelection = document.querySelectorAll(".userSelection");
 var timerElement = document.querySelector(".timer");
 var scoreDisplay = document.querySelector(".scoreDisplay");
+//wrong question penalty
+var wrongTime = 5;
 
 //Attaches start event listener to button
 start.addEventListener("click", Start);
@@ -124,8 +126,8 @@ console.log(questions.length);
 //connected to start button
 function Start() {
     //resets all fields
-    score = 0
-    timerCount = 30;
+    score = 0;
+    timerCount = 30; // *SETS COUNTDOWN LENGTH*
     highscores = [];
     currentQuestion = 0;
     //starts timer
@@ -162,7 +164,8 @@ function Submit(e) {
         console.log(score); //logs score
     } else {
         console.log("wrong answer");
-        timerCount-10;
+        timerCount = timerCount - wrongTime; //subracts from timer if wrong
+        timerCheck()
     }
     if (questions[currentQuestion].question == "End of Quiz!") { //activates game over if on last question by looking "End of Quiz"
         GameOver()
@@ -171,6 +174,14 @@ function Submit(e) {
         renderQ()
     }
 };
+
+//timerCheck function - available to have a wrong answer establish GameOver state if timer is depleted on penalty
+function timerCheck() {
+    if (timerCount <= 0) {
+        clearInterval(timer);
+        GameOver();
+    }
+}
 
 //TIMER FUNCTION
 function Timer() {
