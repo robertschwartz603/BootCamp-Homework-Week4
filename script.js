@@ -22,92 +22,92 @@ for (var i = 0; i < userSelection.length; i++) {
 //question objects and array
 var questions = [
     {
-        question: "why is the sky blue",
-        a: "Refraction",
-        b: "space aliens",
-        c: "fish",
-        d: "javascript",
-        correct: "A"
-    },
-    {
-        question: "why is the earth green",
-        a: "applesause",
-        b: "clams",
-        c: "lobsters",
-        d: "plants",
+        question: "what is not a commonly used data type?",
+        a: "string",
+        b: "alert",
+        c: "number",
+        d: "C++",
         correct: "D"
     },
     {
-        question: "why is space black",
-        a: "void",
-        b: "fish",
+        question: "The condition in an if/else statement is enclosed within:",
+        a: "quotes",
+        b: "clams",
+        c: "curly brackets",
+        d: "parentheses",
+        correct: "D"
+    },
+    {
+        question: "a dev tool for displaying content to the debugger is:",
+        a: "console.log",
+        b: "commas",
         c: "aliens",
-        d: "because there is nothing",
-        correct: "D"
-    },
-    {
-        question: "why is the sky blue",
-        a: "Refraction",
-        b: "space aliens",
-        c: "fish",
-        d: "javascript",
+        d: "bash",
         correct: "A"
     },
     {
-        question: "why is the earth green",
-        a: "applesause",
-        b: "clams",
-        c: "lobsters",
-        d: "plants",
-        correct: "D"
+        question: "how do you enclose string values assigned to variables?",
+        a: "tildas",
+        b: "git clone",
+        c: "quotes",
+        d: "commas",
+        correct: "C"
     },
     {
-        question: "why is space black",
-        a: "void",
-        b: "fish",
-        c: "aliens",
-        d: "because there is nothing",
-        correct: "D"
+        question: "Inside which HTML element do we put the JavaScript?",
+        a: "<js>",
+        b: "<script>",
+        c: "<javascript>",
+        d: "<title>",
+        correct: "B"
     },
     {
-        question: "why is the sky blue",
-        a: "Refraction",
-        b: "space aliens",
-        c: "fish",
-        d: "javascript",
+        question: "Where is the correct place to insert a JavaScript?",
+        a: "<body> section",
+        b: "<head> section",
+        c: "<footer> section",
+        d: "none of these",
         correct: "A"
     },
     {
-        question: "why is the earth green",
-        a: "applesause",
-        b: "clams",
-        c: "lobsters",
-        d: "plants",
-        correct: "D"
-    },
-    {
-        question: "why is space black",
-        a: "void",
-        b: "fish",
-        c: "aliens",
-        d: "because there is nothing",
-        correct: "D"
-    },
-    {
-        question: "why is the sky blue",
-        a: "Refraction",
+        question: "How do you create a function in JavaScript?",
+        a: "function(MyFunction)",
         b: "space aliens",
-        c: "fish",
-        d: "javascript",
-        correct: "A"
+        c: "function myFunction()",
+        d: "you dont",
+        correct: "C"
     },
     {
-        question: "why is the earth green",
-        a: "applesause",
-        b: "clams",
-        c: "lobsters",
-        d: "plants",
+        question: "How do you call a function named myFunction?",
+        a: "myFunction()",
+        b: "call function myFunction()",
+        c: "call myFunction()",
+        d: "with a dog whistle",
         correct: "D"
+    },
+    {
+        question: "Which Of The Dialog Box Display a Message And a Data Entry Field?",
+        a: "Alert()",
+        b: "Prompt()",
+        c: "Confirm()",
+        d: "Msg()",
+        correct: "B"
+    },
+    {
+        question: "Which of these is not a comparison operator?",
+        a: "<",
+        b: ">",
+        c: "=",
+        d: "!=",
+        correct: "C"
+    },
+    {
+        question: "How many parameters can be passed to one function?",
+        a: "one for each argument",
+        b: "one",
+        c: "none",
+        d: "as many as you like",
+        correct: "A"
     },
     {
         //this is always last question - do not touch. used for GameOver() activation before Timer() runs out.
@@ -122,6 +122,8 @@ var questions = [
 
 //logs how many questions you have
 console.log(questions.length);
+
+//renderHighScoreList(); //if i wanted it to keep last score after page refresh
 
 //connected to start button
 function Start() {
@@ -230,10 +232,5 @@ function WellDone() {
     }
 }
 
-
-
 // ---- To Do: ----
-//  add proper questions
-//  get timer reduce after wrong question
-//  finish deploy and readme
-
+// none! all tasks cleared!
