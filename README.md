@@ -22,12 +22,12 @@ This appears as an appended list at bottom of page.
 an alert asks you to play again, if yes: start function begins again. scoreboard remains, and can be appened further!
 
 ##Screenshots
-![The user interface a retro and straightforward experience. See example](./Assets/Javascript Quiz-1.jpg)
+![The user interface a retro and straightforward experience. See example](./Assets/JavascriptQuiz-1.jpg)
 
-![When start button is activated the question and answer buttons populate, timer starts. See example](./Assets/Javascript Quiz-2.jpg)
+![When start button is activated the question and answer buttons populate, timer starts. See example](./Assets/JavascriptQuiz-2.jpg)
 
-![When game over, prompt askes for intitials, writes to local storage, and asks to play again. See example](./Assets/Javascript Quiz-3.jpg)
+![When game over, prompt askes for intitials, writes to local storage, and asks to play again. See example](./Assets/JavascriptQuiz-3.jpg)
 
-![When new game is started, the scores from past attempts log below! See example](./Assets/Javascript Quiz-4.jpg)
+![When new game is started, the scores from past attempts log below! See example](./Assets/JavascriptQuiz-4.jpg)
 
 ## github page: https://robertschwartz603.github.io/BootCamp-Homework-Week4/
